@@ -1,8 +1,8 @@
 ---
 - name: Update Packages on Ubuntu
   hosts: servers
-  become: yes
-  become_user: root
+  become: true
+  become_user: sudo
   become_method: sudo
 
   tasks:
