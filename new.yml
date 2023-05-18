@@ -1,4 +1,3 @@
-  GNU nano 6.2                                                                       new.yml                                                                                
 ---
 - name: Update Packages on Ubuntu
   hosts: servers
