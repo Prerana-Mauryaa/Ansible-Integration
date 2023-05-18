@@ -1,0 +1,26 @@
+  GNU nano 6.2                                                                       new.yml                                                                                
+---
+- name: Update Packages on Ubuntu
+  hosts: servers
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Wait for package manager
+      ansible.builtin.wait_for:
+        timeout: 300
+        delay: 10
+        host: 127.0.0.1
+        port: 22
+      delegate_to: localhost
+
+    - name: Update packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+        cache_valid_time: 3600
+      register: update_result
+      changed_when: "'packages' in update_result.stdout"
+    - name: Print update result
+      ansible.builtin.debug:
+        var: update_result
