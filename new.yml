@@ -1,6 +1,7 @@
 ---
 - name: Update Packages on Ubuntu
   hosts: servers
+  remote_user: ansible
   become: true
 
   tasks:
